@@ -8,8 +8,9 @@ for line in f:
 
 f.closed
 dataCurated = []
-for d in data:
-    dataCurated.append([d[112], d[99], d[123], d[33], d[81]])
+dataCurated.append([data[0][112], data[0][99], data[0][123], data[0][33], data[0][81]])
+for d in data[1:]:
+    dataCurated.append([int(d[112]), int(d[99]), int(d[123]), int(d[33]), int(d[81])])
 
 with open('dataset.txt', 'w') as fw:
     json.dump(dataCurated, fw)
