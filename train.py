@@ -6,6 +6,7 @@ from sklearn.linear_model import lasso_path, enet_path
 from sklearn.metrics import mean_absolute_error
 from sklearn.metrics import median_absolute_error
 
+from sklearn.utils import shuffle
 
 import json
 
@@ -22,6 +23,9 @@ y = []
 for d in dataset[1:]:
     X.append(d[1:4])
     y.append(d[4])
+
+X, y = shuffle(X, y)
+
 print('Finding {0} with {1}'.format(features[4], ', '.join(features[:4])))
 X_train, X_test = X[:1000], X[1000:]
 y_train, y_test = y[:1000], y[1000:]
